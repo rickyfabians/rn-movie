@@ -1,7 +1,7 @@
 <h1 align="center">Movie DB</h1>
 
   <p align="center">
-  Built with Ignite-cli Andross 
+  Built with React Native v0.63.0
   </p>
 
 ## Introduction
