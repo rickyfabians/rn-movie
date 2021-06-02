@@ -31,8 +31,9 @@ Simple Movie DB Application to search movie and get a list from popular, trendin
 5. For deployment Run `fastlane android dev` ([setup fastlane](https://fastlane.tools/))
 
 ## Unit Test
-using [Jest](https://jestjs.io/)
-Github Actions(https://github.com/rickyfabians/rn-movie/runs/2724393145?check_suite_focus=true) expand npm run test
+Using [Jest](https://jestjs.io/)
+
+Open [Github Actions](https://github.com/rickyfabians/rn-movie/runs/2724393145?check_suite_focus=true). expand Run npm test
 
 * [Redux](https://github.com/rickyfabians/rn-movie/runs/2724393145?check_suite_focus=true)
 * [Sagas](https://github.com/rickyfabians/rn-movie/runs/2724393145?check_suite_focus=true)
