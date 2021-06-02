@@ -36,6 +36,12 @@ using [Jest](https://jestjs.io/)
 * Redux (you can find in github actions)
 * Sagas (you can find in github actions)
 * Api (you can find in github actions)
+
+## Standard
+* [standard js](https://standardjs.com/)
+
+## GitHook
+* [husky](https://github.com/typicode/husky)
 ## Automate Deployment
 * [github action](https://github.com/features/actions)
 * [Fastlane](https://fastlane.tools/)

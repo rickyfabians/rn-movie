@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint .",
+    "lint": "standard --verbose | snazzy",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
     "clean:android": "cd android/ && ./gradlew clean && cd .. && npx react-native run-android",
     "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf node_modules/ && npm cache clean --force && npm i",
@@ -60,7 +60,8 @@
     "seamless-immutable": "^7.1.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
+    "@babel/core": "^7.14.3",
+    "@babel/eslint-parser": "^7.14.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^1.1.0",
     "@storybook/addon-actions": "5.0.11",
@@ -72,7 +73,8 @@
     "babel-eslint": "7.1.1",
     "babel-jest": "^25.1.0",
     "babel-plugin-ignite-ignore-reactotron": "^0.3.0",
-    "eslint": "^6.6.0",
+    "eslint": "^7.23.0",
+    "husky": "^6.0.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.13.1",
@@ -80,7 +82,7 @@
     "reactotron-redux": "^3.1.2",
     "reactotron-redux-saga": "^4.2.2",
     "snazzy": "^8.0.0",
-    "standard": "10.0.2"
+    "standard": "^16.0.3"
   },
   "jest": {
     "preset": "react-native",
@@ -102,5 +104,16 @@
       "<rootDir>/Tests/Setup"
     ]
   },
-  "config": {}
+  "config": {},
+  "standard": {
+    "parser": "@babel/eslint-parser",
+    "globals": [
+      "describe",
+      "test",
+      "jest",
+      "expect",
+      "fetch",
+      "__DEV__"
+    ]
+  }
 }

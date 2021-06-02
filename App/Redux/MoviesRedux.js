@@ -55,62 +55,62 @@ export const INITIAL_STATE = Immutable({
 export const getTrendingRequest = (state) =>
   state.merge({ trendingFetching: true, trendingError: null })
 
-export const getTrendingSuccess = (state, {data}) => {
-  return state.merge({ trendingFetching: false, trendingData: data, trendingError: null})
+export const getTrendingSuccess = (state, { data }) => {
+  return state.merge({ trendingFetching: false, trendingData: data, trendingError: null })
 }
 
-export const getTrendingFailure = (state, {data}) =>
-  state.merge({ trendingFetching: false, trendingError: data})
+export const getTrendingFailure = (state, { data }) =>
+  state.merge({ trendingFetching: false, trendingError: data })
 
 export const getPopularRequest = (state) =>
   state.merge({ popularFetching: true, popularError: null })
 
-export const getPopularSuccess = (state, {data}) => {
-  return state.merge({ popularFetching: false, popularData: data, popularError: null})
+export const getPopularSuccess = (state, { data }) => {
+  return state.merge({ popularFetching: false, popularData: data, popularError: null })
 }
 
-export const getPopularFailure = (state, {data}) =>
-  state.merge({ popularFetching: false, popularError: data})
+export const getPopularFailure = (state, { data }) =>
+  state.merge({ popularFetching: false, popularError: data })
 
 export const getTopRatedRequest = (state) =>
   state.merge({ topRatedFetching: true, topRatedError: null })
 
-export const getTopRatedSuccess = (state, {data}) => {
-  return state.merge({ topRatedFetching: false, topRatedData: data, topRatedError: null})
+export const getTopRatedSuccess = (state, { data }) => {
+  return state.merge({ topRatedFetching: false, topRatedData: data, topRatedError: null })
 }
 
-export const getTopRatedFailure = (state, {data}) =>
-  state.merge({ topRatedFetching: false, topRatedError: data})
+export const getTopRatedFailure = (state, { data }) =>
+  state.merge({ topRatedFetching: false, topRatedError: data })
 
 export const getUpComingRequest = (state) =>
   state.merge({ upComingFetching: true, upComingError: null })
 
-export const getUpComingSuccess = (state, {data}) => {
-  return state.merge({ upComingFetching: false, upComingData: data, upComingError: null})
+export const getUpComingSuccess = (state, { data }) => {
+  return state.merge({ upComingFetching: false, upComingData: data, upComingError: null })
 }
 
-export const getUpComingFailure = (state, {data}) =>
-  state.merge({ upComingFetching: false, upComingError: data})
+export const getUpComingFailure = (state, { data }) =>
+  state.merge({ upComingFetching: false, upComingError: data })
 
 export const getListOfMovieRequest = (state) =>
   state.merge({ listOfMovieFetching: true, listOfMovieError: null })
 
-export const getListOfMovieSuccess = (state, {data}) => {
-  return state.merge({ listOfMovieFetching: false, listOfMovieData: data, listOfMovieError: null})
+export const getListOfMovieSuccess = (state, { data }) => {
+  return state.merge({ listOfMovieFetching: false, listOfMovieData: data, listOfMovieError: null })
 }
 
-export const getListOfMovieFailure = (state, {data}) =>
-  state.merge({ listOfMovieFetching: false, listOfMovieError: data})
+export const getListOfMovieFailure = (state, { data }) =>
+  state.merge({ listOfMovieFetching: false, listOfMovieError: data })
 
 export const getMovieDetailsRequest = (state) =>
   state.merge({ movieDetailsFetching: true, movieDetailsError: null })
 
-export const getMovieDetailsSuccess = (state, {data}) => {
-  return state.merge({ movieDetailsFetching: false, movieDetailsData: data, movieDetailsError: null})
+export const getMovieDetailsSuccess = (state, { data }) => {
+  return state.merge({ movieDetailsFetching: false, movieDetailsData: data, movieDetailsError: null })
 }
 
-export const getMovieDetailsFailure = (state, {data}) =>
-  state.merge({ movieDetailsFetching: false, movieDetailsError: data})
+export const getMovieDetailsFailure = (state, { data }) =>
+  state.merge({ movieDetailsFetching: false, movieDetailsError: data })
 
 /* ------------- Hookup Reducers To Types ------------- */
 

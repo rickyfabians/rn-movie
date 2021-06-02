@@ -1,11 +1,11 @@
 import { call, put } from 'redux-saga/effects'
 import MoviesActions from '../Redux/MoviesRedux'
 
-export function * getTrending(api, action) {
+export function * getTrending (api, action) {
   const { data, callback } = action
   // make the call to the api
   const response = yield call(api.getTrending, data)
-  if(data.isOnlyFetch) callback?.(response)
+  if (data.isOnlyFetch) callback?.(response)
   else {
     if (response.ok) {
       // do data conversion here if needed
@@ -14,13 +14,12 @@ export function * getTrending(api, action) {
       yield put(MoviesActions.getTrendingFailure())
     }
   }
-  
 }
 
-export function * getPopular(api, action) {
+export function * getPopular (api, action) {
   const { page } = action
   // make the call to the api
-  const response = yield call(api.getPopular, {page})
+  const response = yield call(api.getPopular, { page })
 
   if (response.ok) {
     // do data conversion here if needed
@@ -30,10 +29,10 @@ export function * getPopular(api, action) {
   }
 }
 
-export function * getTopRated(api, action) {
+export function * getTopRated (api, action) {
   const { page } = action
   // make the call to the api
-  const response = yield call(api.getTopRated, {page})
+  const response = yield call(api.getTopRated, { page })
 
   if (response.ok) {
     // do data conversion here if needed
@@ -43,10 +42,10 @@ export function * getTopRated(api, action) {
   }
 }
 
-export function * getUpComing(api, action) {
+export function * getUpComing (api, action) {
   const { page } = action
   // make the call to the api
-  const response = yield call(api.getUpComing, {page})
+  const response = yield call(api.getUpComing, { page })
 
   if (response.ok) {
     // do data conversion here if needed
@@ -56,21 +55,21 @@ export function * getUpComing(api, action) {
   }
 }
 
-export function * getListOfMovie(api, action) {
+export function * getListOfMovie (api, action) {
   const { data, callback } = action
   // make the call to the api
   const response = yield call(api.getListOfMovie, data)
   if (response.ok) {
     // do data conversion here if needed
-    if(data.page > 1) callback(response.data)
+    if (data.page > 1) callback(response.data)
     else yield put(MoviesActions.getListOfMovieSuccess(response.data))
   } else {
     yield put(MoviesActions.getListOfMovieFailure())
   }
 }
 
-export function * getMovieDetails(api, action) {
-  const { data, callback } = action
+export function * getMovieDetails (api, action) {
+  const { data } = action
   // make the call to the api
   const response = yield call(api.getMovieDetails, data)
   if (response.ok) {

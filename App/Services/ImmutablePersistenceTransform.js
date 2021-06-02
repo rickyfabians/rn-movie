@@ -25,7 +25,6 @@ export default createTransform(
 )
 
 export const reducedStateHydrate = (inboundState, originalState, reducedState) => {
-  console.log({inboundState, originalState, reducedState})
   reducedState.movies = inboundState.movies || originalState.movies
   return reducedState
 }

@@ -42,7 +42,7 @@ test('FixtureAPI getUser returns the right file for skellock as default', () => 
 test('FixtureAPI getMovieDetails returns the right file for movieDetails as default', () => {
   const expectedFile = require('../../App/Fixtures/movieDetails.json')
 
-  expect(FixtureAPI.getMovieDetails({movieId: 337404})).toEqual({
+  expect(FixtureAPI.getMovieDetails({ movieId: 337404 })).toEqual({
     ok: true,
     data: expectedFile
   })

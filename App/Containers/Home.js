@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, View, ScrollView } from 'react-native'
 
 import CardCategory from '../Components/CardCategory'
@@ -12,7 +12,7 @@ const Home = () => {
   }, [])
   return (
     <View style={container}>
-      <ScrollView >
+      <ScrollView>
         <CardCategory action='getTrendingRequest' categoryName='trending' />
         <CardCategory action='getPopularRequest' categoryName='popular' />
         <CardCategory action='getTopRatedRequest' categoryName='topRated' />

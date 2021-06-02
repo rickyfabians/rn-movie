@@ -35,18 +35,18 @@ const create = (baseURL = 'https://api.themoviedb.org/3/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const getTrending = ({page = 1}) => api.get(`trending/movie/day?api_key=${API_KEY}&page=${page}`)
-  const getPopular = ({page = 1}) => api.get(`movie/popular?api_key=${API_KEY}&page=${page}`)
-  const getTopRated = ({page = 1}) => api.get(`movie/top_rated?api_key=${API_KEY}&page=${page}`)
-  const getUpComing = ({page = 1}) => api.get(`movie/upcoming?api_key=${API_KEY}&page=${page}`)
+  const getTrending = ({ page = 1 }) => api.get(`trending/movie/day?api_key=${API_KEY}&page=${page}`)
+  const getPopular = ({ page = 1 }) => api.get(`movie/popular?api_key=${API_KEY}&page=${page}`)
+  const getTopRated = ({ page = 1 }) => api.get(`movie/top_rated?api_key=${API_KEY}&page=${page}`)
+  const getUpComing = ({ page = 1 }) => api.get(`movie/upcoming?api_key=${API_KEY}&page=${page}`)
 
-  const getListOfMovie = ({page = 1, query = ''}) => api.get(`search/movie?api_key=${API_KEY}&page=${page}&query=${query}`)
-  
-  const getMovieDetails = ({movieId = ''}) => api.get(`movie/${movieId}?api_key=${API_KEY}`)
+  const getListOfMovie = ({ page = 1, query = '' }) => api.get(`search/movie?api_key=${API_KEY}&page=${page}&query=${query}`)
+
+  const getMovieDetails = ({ movieId = '' }) => api.get(`movie/${movieId}?api_key=${API_KEY}`)
 
   const getRoot = () => api.get('')
   const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
+  const getUser = (username) => api.get('search/users', { q: username })
 
   // ------
   // STEP 3

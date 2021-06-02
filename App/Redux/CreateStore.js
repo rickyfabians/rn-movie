@@ -28,7 +28,7 @@ export default (rootReducer, rootSaga) => {
   const store = createAppropriateStore(rootReducer, compose(...enhancers))
 
   // kick off root saga
-  let sagasManager = sagaMiddleware.run(rootSaga)
+  const sagasManager = sagaMiddleware.run(rootSaga)
 
   return {
     store,
