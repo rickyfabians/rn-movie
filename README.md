@@ -1,7 +1,7 @@
 <h1 align="center">Movie DB</h1>
 
   <p align="center">
-  Built with [Ignite-cli Andross](https://github.com/infinitered/ignite-andross)
+  Built with Ignite-cli Andross 
   </p>
 
 ## Introduction
@@ -14,6 +14,10 @@ Simple Movie DB Application to search movie and get a list from popular, trendin
 * Popular list Movie
 * TopRated list Movie
 * Upcoming list Movie
+
+## Boilerplate
+* [Ignite-cli Andross](https://github.com/infinitered/ignite-andross)
+
 ## Integration API
 * [themovedb](https://developers.themoviedb.org/3)
 ## How to use
