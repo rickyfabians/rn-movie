@@ -2,7 +2,8 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const API_KEY = '16920a1e34e3b08e3a720c33cfc1341c'
+const create = (baseURL = 'https://api.themoviedb.org/3/') => {
   // ------
   // STEP 1
   // ------
@@ -34,6 +35,15 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
+  const getTrending = ({page = 1}) => api.get(`trending/movie/day?api_key=${API_KEY}&page=${page}`)
+  const getPopular = ({page = 1}) => api.get(`movie/popular?api_key=${API_KEY}&page=${page}`)
+  const getTopRated = ({page = 1}) => api.get(`movie/top_rated?api_key=${API_KEY}&page=${page}`)
+  const getUpComing = ({page = 1}) => api.get(`movie/upcoming?api_key=${API_KEY}&page=${page}`)
+
+  const getListOfMovie = ({page = 1, query = ''}) => api.get(`search/movie?api_key=${API_KEY}&page=${page}&query=${query}`)
+  
+  const getMovieDetails = ({movieId = ''}) => api.get(`movie/${movieId}?api_key=${API_KEY}`)
+
   const getRoot = () => api.get('')
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', {q: username})
@@ -52,6 +62,12 @@ const create = (baseURL = 'https://api.github.com/') => {
   //
   return {
     // a list of the API functions from step 2
+    getMovieDetails,
+    getListOfMovie,
+    getTrending,
+    getPopular,
+    getTopRated,
+    getUpComing,
     getRoot,
     getRate,
     getUser

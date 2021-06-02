@@ -1,0 +1,23 @@
+platform :android do 
+  lane :build do     
+     gradle(task: 'clean', project_dir: 'android/')     
+     gradle(
+        task: 'assemble', 
+        build_type: 'release', 
+        project_dir: 'android/',
+        flavor: ENV["ANDROID_FLAVOUR"]
+     )   
+  end
+
+  desc 'Build and upload to App Center.'
+    lane :dev do
+        build
+        appcenter_upload(
+            api_token: "70a1145253357a09642f0ec162e6d1282367e239",
+            owner_name: "ricky102",
+            app_name: "movie-android",
+            destinations: "*",
+        )
+    end
+  
+end

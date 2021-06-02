@@ -20,5 +20,11 @@ export default {
       ok: true,
       data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData
     }
+  },
+  getMovieDetails: () => {
+    return {
+      ok: true,
+      data: require('../Fixtures/movieDetails.json')
+    }
   }
 }
