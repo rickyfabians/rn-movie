@@ -32,10 +32,12 @@ Simple Movie DB Application to search movie and get a list from popular, trendin
 
 ## Unit Test
 using [Jest](https://jestjs.io/)
+Github Actions(https://github.com/rickyfabians/rn-movie/runs/2724393145?check_suite_focus=true) expand npm run test
 
-* Redux (you can find in github actions)
-* Sagas (you can find in github actions)
-* Api (you can find in github actions)
+* [Redux](https://github.com/rickyfabians/rn-movie/runs/2724393145?check_suite_focus=true)
+* [Sagas](https://github.com/rickyfabians/rn-movie/runs/2724393145?check_suite_focus=true)
+* [Api](https://github.com/rickyfabians/rn-movie/runs/2724393145?check_suite_focus=true)
+
 ## Automate Deployment
 * [github action](https://github.com/features/actions)
 * [Fastlane](https://fastlane.tools/)
