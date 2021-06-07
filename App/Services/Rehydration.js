@@ -23,6 +23,8 @@ const updateReducers = (store, isServer) => {
       }
       // Purge store
       persistStore(store, null).purge()
+      AsyncStorage.setItem('movies', '')
+      AsyncStorage.setItem('auth', '')
       AsyncStorage.setItem('reducerVersion', reducerVersion)
     } else {
       persistStore(store, null)

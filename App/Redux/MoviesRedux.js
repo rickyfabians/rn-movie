@@ -4,22 +4,23 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
+  getMoviesSelectionRequest: ['data'],
   getMovieDetailsRequest: ['data'],
   getMovieDetailsSuccess: ['data'],
   getMovieDetailsFailure: ['data'],
   getListOfMovieRequest: ['data', 'callback'],
   getListOfMovieSuccess: ['data'],
   getListOfMovieFailure: ['data'],
-  getTrendingRequest: ['data'],
+  getTrendingRequest: ['data', 'callback'],
   getTrendingSuccess: ['data'],
   getTrendingFailure: ['data'],
-  getPopularRequest: ['data'],
+  getPopularRequest: ['data', 'callback'],
   getPopularSuccess: ['data'],
   getPopularFailure: ['data'],
-  getTopRatedRequest: ['data'],
+  getTopRatedRequest: ['data', 'callback'],
   getTopRatedSuccess: ['data'],
   getTopRatedFailure: ['data'],
-  getUpComingRequest: ['data'],
+  getUpComingRequest: ['data', 'callback'],
   getUpComingSuccess: ['data'],
   getUpComingFailure: ['data']
 })
@@ -51,6 +52,8 @@ export const INITIAL_STATE = Immutable({
 })
 
 /* ------------- Reducers ------------- */
+export const getMoviesSelectionRequest = (state, { data }) =>
+  state.merge({ [`${data.categoryParam}Fetching`]: true, [`${data.categoryParam}Error`]: null })
 
 export const getTrendingRequest = (state) =>
   state.merge({ trendingFetching: true, trendingError: null })
@@ -115,6 +118,7 @@ export const getMovieDetailsFailure = (state, { data }) =>
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
+  [Types.GET_MOVIES_SELECTION_REQUEST]: getMoviesSelectionRequest,
   [Types.GET_MOVIE_DETAILS_REQUEST]: getMovieDetailsRequest,
   [Types.GET_MOVIE_DETAILS_SUCCESS]: getMovieDetailsSuccess,
   [Types.GET_MOVIE_DETAILS_FAILURE]: getMovieDetailsFailure,

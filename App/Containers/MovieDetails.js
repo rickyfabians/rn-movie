@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, Text, View, ScrollView, Image, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Image, Dimensions, ActivityIndicator } from 'react-native'
 import { View as ViewAnimated } from 'react-native-animatable'
 import { useTheme } from '@react-navigation/native'
 import isEmpty from 'lodash/isEmpty'
@@ -15,28 +15,36 @@ const MovieDetails = ({ route }) => {
   const { text, textScore, title, container, subTitle, box, body } = styles({ colors })
   const dispatch = useDispatch()
   const movie = useSelector(state => state.movies.movieDetailsData)
+  const isFetching = useSelector(state => state.movies.movieDetailsFetching)
 
   useEffect(() => {
     dispatch(MoviesActions.getMovieDetailsRequest({ movieId }))
     return () => {
+      dispatch(MoviesActions.getMovieDetailsSuccess(null))
     }
   }, [movieId])
-  if (isEmpty(movie)) return null
   return (
     <View style={container}>
-      <ScrollView style={{ flex: 1 }}>
-        <View style={{ height }}>
-          <Image source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }} style={{ width: width, height: height * 0.75, resizeMode: 'contain' }} />
-        </View>
-        <ViewAnimated style={body} useNativeDriver animation='fadeInUpBig' easing='ease-out-expo'>
-          <Text style={title}>{movie.title}</Text>
-          <Text style={textScore}>Rating: {movie.vote_average} ({movie.vote_count})</Text>
-          <View style={box}>
-            <Text style={subTitle}>Overview</Text>
-            <Text style={text}>{movie.overview}</Text>
-          </View>
-        </ViewAnimated>
-      </ScrollView>
+      {
+          isFetching
+            ? <ActivityIndicator size='large' color={colors.text} style={{ alignSelf: 'center', height }} />
+            : !isEmpty(movie) &&
+            (
+              <ScrollView style={{ flex: 1 }}>
+                <View style={{ height }}>
+                  <Image source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }} style={{ width: width, height: height * 0.75, resizeMode: 'contain' }} />
+                </View>
+                <ViewAnimated style={body} useNativeDriver animation='fadeInUpBig' easing='ease-out-expo'>
+                  <Text style={title}>{movie.title}</Text>
+                  <Text style={textScore}>Rating: {movie.vote_average} ({movie.vote_count})</Text>
+                  <View style={box}>
+                    <Text style={subTitle}>Overview</Text>
+                    <Text style={text}>{movie.overview}</Text>
+                  </View>
+                </ViewAnimated>
+              </ScrollView>
+            )
+        }
     </View>
   )
 }

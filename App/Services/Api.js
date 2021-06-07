@@ -47,6 +47,8 @@ const create = (baseURL = 'https://api.themoviedb.org/3/') => {
   const getRoot = () => api.get('')
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', { q: username })
+  const reqToken = () => api.get(`authentication/token/new?api_key=${API_KEY}`)
+  const login = (payload) => api.post(`authentication/token/validate_with_login?api_key=${API_KEY}`, payload)
 
   // ------
   // STEP 3
@@ -62,6 +64,8 @@ const create = (baseURL = 'https://api.themoviedb.org/3/') => {
   //
   return {
     // a list of the API functions from step 2
+    reqToken,
+    login,
     getMovieDetails,
     getListOfMovie,
     getTrending,

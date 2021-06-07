@@ -13,10 +13,10 @@ const Home = () => {
   return (
     <View style={container}>
       <ScrollView>
-        <CardCategory action='getTrendingRequest' categoryName='trending' />
-        <CardCategory action='getPopularRequest' categoryName='popular' />
-        <CardCategory action='getTopRatedRequest' categoryName='topRated' />
-        <CardCategory action='getUpComingRequest' categoryName='upComing' />
+        {/* <CardCategory action='getTrendingRequest' categoryName='trending' categoryTitle='' /> */}
+        <CardCategory categoryParam='popular' categoryTitle='Popular' />
+        <CardCategory categoryParam='topRated' categoryTitle='Top Rated' />
+        <CardCategory categoryParam='upComing' categoryTitle='Up Coming' />
       </ScrollView>
     </View>
   )

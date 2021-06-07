@@ -4,10 +4,7 @@ import DebugConfig from '../Config/DebugConfig'
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import RootContainer from './RootContainer'
-import createStore from '../Redux'
-
-// create our store
-const store = createStore()
+import mainStore from '../Redux'
 
 /**
  * Provides an entry point into our application.  Both index.ios.js and index.android.js
@@ -18,8 +15,9 @@ const store = createStore()
  *
  * We separate like this to play nice with React Native's hot reloading.
  */
-class App extends Component {
+class App extends Component {// create our store
   render () {
+    const { store } = mainStore
     return (
       <Provider store={store}>
         <RootContainer />

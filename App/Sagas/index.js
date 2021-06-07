@@ -8,12 +8,13 @@ import DebugConfig from '../Config/DebugConfig'
 import { StartupTypes } from '../Redux/StartupRedux'
 import { GithubTypes } from '../Redux/GithubRedux'
 import { MoviesTypes } from '../Redux/MoviesRedux'
-
+import { AuthTypes } from '../Redux/AuthRedux'
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
 import { getTrending, getPopular, getTopRated, getUpComing, getListOfMovie, getMovieDetails } from './MoviesSagas'
+import { login } from './AuthSagas'
 
 /* ------------- API ------------- */
 
@@ -35,6 +36,8 @@ export default function * root () {
     takeLatest(MoviesTypes.GET_TOP_RATED_REQUEST, getTopRated, api),
     takeLatest(MoviesTypes.GET_UP_COMING_REQUEST, getUpComing, api),
     takeLatest(MoviesTypes.GET_LIST_OF_MOVIE_REQUEST, getListOfMovie, api),
-    takeLatest(MoviesTypes.GET_MOVIE_DETAILS_REQUEST, getMovieDetails, api)
+    takeLatest(MoviesTypes.GET_MOVIE_DETAILS_REQUEST, getMovieDetails, api),
+
+    takeLatest(AuthTypes.LOGIN_REQUEST, login, api)
   ])
 }

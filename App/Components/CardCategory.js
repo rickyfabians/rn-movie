@@ -10,29 +10,41 @@ import isEmpty from 'lodash/isEmpty'
 import map from 'lodash/map'
 
 const { width } = Dimensions.get('screen')
-const CardCategory = ({ action, categoryName }) => {
+const categoryAction = {
+  popular: MoviesActions.getPopularRequest,
+  topRated: MoviesActions.getTopRatedRequest,
+  upComing: MoviesActions.getUpComingRequest
+}
+const CardCategory = ({ categoryParam, categoryTitle }) => {
   const { navigate } = useNavigation()
   const { colors } = useTheme()
-  const { cardCategory, titleCategory } = styles({ colors })
+  const { cardCategory, titleCategory, headerCategory, moreCategory } = styles({ colors })
   const dispatch = useDispatch()
-  const movies = useSelector(state => state.movies[`${categoryName}Data`])
-  const isFetching = useSelector(state => state.movies[`${categoryName}Fetching`])
+  const movies = useSelector(state => state.movies[`${categoryParam}Data`])
+  const isFetching = useSelector(state => state.movies[`${categoryParam}Fetching`])
 
   useEffect(() => {
-    dispatch(MoviesActions[action]({ page: 1 }))
+    dispatch(categoryAction[categoryParam]({ page: 1 }))
     return () => {
 
     }
   }, [])
   return (
     <View style={cardCategory}>
-      <Text style={titleCategory}>{categoryName}</Text>
+      <View style={headerCategory}>
+        <Text style={titleCategory}>{categoryTitle}</Text>
+        {movies?.total_results > 20 && (
+          <TouchableOpacity onPress={() => navigate('More', { categoryParam })}>
+            <Text style={moreCategory}>More ({movies.total_results})</Text>
+          </TouchableOpacity>
+        )}
+      </View>
       <ScrollView horizontal>
         {
                     isFetching && isEmpty(movies)
                       ? <ActivityIndicator color={colors.primary} size='large' style={{ height: width * 0.45, alignSelf: 'center' }} />
                       : map(movies?.results, (item, index) => (
-                        <ViewAnimated key={index} delay={index / 1000} useNativeDriver animation='slideInRight' easing='ease-out-bounce'>
+                        <ViewAnimated key={index} delay={index / 1000} useNativeDriver animation='slideInRight' easing='ease-out-quint'>
                           <TouchableOpacity onPress={() => navigate('MovieDetails', { id: item.id })} key={index} style={{ padding: 5 }}>
                             <Image source={{ uri: `https://image.tmdb.org/t/p/w500${item.poster_path}` }} style={{ width: width * 0.3, height: width * 0.45 }} />
                           </TouchableOpacity>
@@ -54,6 +66,15 @@ const styles = ({ colors }) => StyleSheet.create({
   titleCategory: {
     color: colors.text,
     fontSize: 20
+  },
+  headerCategory: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end'
+  },
+  moreCategory: {
+    color: colors.primary,
+    fontSize: 15
   }
 
 })
