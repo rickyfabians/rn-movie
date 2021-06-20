@@ -5,12 +5,14 @@ import { useTheme, useNavigation } from '@react-navigation/native'
 
 import { useDispatch, useSelector } from 'react-redux'
 import MoviesActions from '../Redux/MoviesRedux'
+import AuthActions from '../Redux/AuthRedux'
 
 const { width } = Dimensions.get('screen')
 const categoryAction = {
   popular: MoviesActions.getPopularRequest,
   topRated: MoviesActions.getTopRatedRequest,
-  upComing: MoviesActions.getUpComingRequest
+  upComing: MoviesActions.getUpComingRequest,
+  watchList: AuthActions.watchListRequest
 }
 const More = ({ route }) => {
   const categoryParam = route.params?.categoryParam ?? ''
@@ -55,7 +57,11 @@ const More = ({ route }) => {
             callOnEndReached = true
           }
         }}
-        ListFooterComponent={() => (isFetching && <ActivityIndicator size='large' color={colors.text} style={{ alignSelf: 'center' }} />)}
+        ListFooterComponent={() => (
+          isFetching
+            ? <ActivityIndicator size='large' color={colors.text} style={{ alignSelf: 'center' }} />
+            : null
+        )}
         onEndReachedThreshold={0.1}
         onMomentumScrollBegin={() => { callOnEndReached = false }}
       />

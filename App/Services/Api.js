@@ -48,7 +48,12 @@ const create = (baseURL = 'https://api.themoviedb.org/3/') => {
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', { q: username })
   const reqToken = () => api.get(`authentication/token/new?api_key=${API_KEY}`)
+  const reqSession = (token) => api.post(`authentication/session/new?api_key=${API_KEY}`, { request_token: token })
   const login = (payload) => api.post(`authentication/token/validate_with_login?api_key=${API_KEY}`, payload)
+  const getAccount = (sessionId) => api.get(`account?api_key=${API_KEY}&session_id=${sessionId}`)
+
+  const getWatchList = ({ page = 1 }, accountId, sessionId) => api.get(`account/${accountId}/watchlist/movies?api_key=${API_KEY}&session_id=${sessionId}&page=${page}`)
+  const getFavorite = ({ page = 1 }, accountId, sessionId) => api.get(`account/${accountId}/favorite/movies?api_key=${API_KEY}&session_id=${sessionId}&page=${page}`)
 
   // ------
   // STEP 3
@@ -64,6 +69,10 @@ const create = (baseURL = 'https://api.themoviedb.org/3/') => {
   //
   return {
     // a list of the API functions from step 2
+    getFavorite,
+    getWatchList,
+    getAccount,
+    reqSession,
     reqToken,
     login,
     getMovieDetails,

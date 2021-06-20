@@ -14,7 +14,7 @@ import { AuthTypes } from '../Redux/AuthRedux'
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
 import { getTrending, getPopular, getTopRated, getUpComing, getListOfMovie, getMovieDetails } from './MoviesSagas'
-import { login } from './AuthSagas'
+import { login, getWatchList } from './AuthSagas'
 
 /* ------------- API ------------- */
 
@@ -38,6 +38,7 @@ export default function * root () {
     takeLatest(MoviesTypes.GET_LIST_OF_MOVIE_REQUEST, getListOfMovie, api),
     takeLatest(MoviesTypes.GET_MOVIE_DETAILS_REQUEST, getMovieDetails, api),
 
-    takeLatest(AuthTypes.LOGIN_REQUEST, login, api)
+    takeLatest(AuthTypes.LOGIN_REQUEST, login, api),
+    takeLatest(AuthTypes.WATCH_LIST_REQUEST, getWatchList, api)
   ])
 }

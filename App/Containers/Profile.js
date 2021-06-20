@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux'
 const Profile = () => {
   const { container } = styles()
   const isLogin = useSelector(state => state.auth?.authData?.success)
+  const state = useSelector(state => state)
   useEffect(() => {
     return () => {
     }
